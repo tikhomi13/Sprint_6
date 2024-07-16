@@ -1,14 +1,5 @@
 import allure
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
-
-#from pages.base_page import BasePage
-from pages.main_page import MainPage
 from pages.order_page_1 import OrderPageOne
-from pages.order_page_2 import OrderPageTwo
-import time
 from data import URLs
 from data import Contents
 
@@ -28,14 +19,6 @@ class TestOrderPageOne:
         assert go_to_next_page.get_header_2().is_displayed()
 
 # второй набор?
-
-
-
-    #def test_set_firstname(self, driver):
-
-     #   open_order_1_page = OrderPageOne(driver)
-     #   open_order_1_page.open_page(URLs.OPEN_SCOOTER_ORDER_PAGE)
-     #   OrderPageOne(driver).set_firstname(Contents.FIRSTNAME)
 
 
 # Проверить весь флоу
