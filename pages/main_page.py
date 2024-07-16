@@ -53,17 +53,6 @@ class MainPage(BasePage):
         return answer_select.text
 
 
-       #    выбираем вопрос, а возвращаем - ответ
-
-
-
-    def choose_answers(self, answer):           # метод для параметризации
-
-        answer_select = self.wait_and_find_element(answer)
-        return answer_select.text
-
-
-
 
 
     @allure.step('Далее селекты вопросов внизу страницы')

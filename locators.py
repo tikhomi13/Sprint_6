@@ -26,6 +26,8 @@ class Locators:
 
     ANSWER_1 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_ONE_TEXT}")]')
 
+#
+
     ANSWER_2 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_TWO_TEXT}")]')
 
     ANSWER_3 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_THREE_TEXT}")]')
