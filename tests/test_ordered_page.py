@@ -45,8 +45,10 @@ class TestOrderedPage:
 
         yandex_page = RedirectToYandex(driver)
         yandex_page.dzen_url()
+
+        assert yandex_page.dzen_url() == URLs.URL_DZEN
+
         yandex_page.close_popup()
 
-        assert yandex_page.dzen_url() == 'https://dzen.ru/?yredirect=true'
 
 # +  спросить как убрать вспл окно с куки на сайте самоката

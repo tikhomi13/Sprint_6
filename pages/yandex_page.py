@@ -8,7 +8,10 @@ from pages.base_page import BasePage
 
 class RedirectToYandex(BasePage):
 
-    CLOSE_POPUP = (By.XPATH, ".//div[8]//span[contains(@class, 'i8b')]//*[local-name()='svg']")
+    # CLOSE_POPUP = (By.XPATH, ".//div[8]//span[contains(@class, 'i8b')]//*[local-name()='svg']") устарело (?)
+
+    CLOSE_POPUP = (By.XPATH, ".//div[8]//span[contains(@class, 'b99')]//*[local-name()='svg']")
+
 
     LOGO_YA = (By.XPATH, ".//div/header/div[contains(@class, 'desktop-base-header')]/a")
 
