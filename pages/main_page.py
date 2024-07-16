@@ -44,16 +44,20 @@ class MainPage(BasePage):
         self.driver.execute_script("arguments[0]. scrollIntoView();", element_to_scroll)
 
 
-    def select_questions(self, question):
+    def select_questions(self, question, answer):          # метод для параметризации
 
         question_select = self.wait_and_find_element(question)
         question_select.click()
 
-        return question_select.text   ####
+        answer_select = self.wait_and_find_element(answer)
+        return answer_select.text
+
+
+       #    выбираем вопрос, а возвращаем - ответ
 
 
 
-    def choose_answer(self, answer):
+    def choose_answers(self, answer):           # метод для параметризации
 
         answer_select = self.wait_and_find_element(answer)
         return answer_select.text

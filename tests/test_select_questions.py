@@ -27,10 +27,11 @@ class TestMainPage:
         open_main_page = MainPage(driver)
         open_main_page.open_page(URLs.OPEN_SCOOTER)
         open_main_page.scroll_to_questions()
+        open_main_page.select_questions(question, answer)
 
-        open_main_page.select_questions(question)
+        expected_text = open_main_page.select_questions(question, answer)
+        actual_text = open_main_page.choose_answers(answer)
 
-        #open_main_page.question
+        assert expected_text == actual_text
 
-        assert open_main_page.select_questions(question).text == open_main_page.choose_answer(answer)
 
