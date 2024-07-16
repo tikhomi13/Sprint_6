@@ -1,5 +1,9 @@
 import time
 
+import pytest
+
+from locators import Locators
+
 import allure
 from pages.main_page import MainPage
 from pages.base_page import BasePage
@@ -15,7 +19,7 @@ class TestMainPage:
     @allure.description('Форма заполняется открывается нажатием на кнопку заказа в хедере справа')
     def test_use_order_button_1(self, driver):                        # потом перенести открытие сайта в фикстуру
         open_main_page = MainPage(driver)                             # Автотест - образец
-        open_main_page.open_page(URLs.OPEN_SCOOTER)                   # Открываем страницу через метод в Base_page
+        open_main_page.open_page(URLs.BASE_URL)                   # Открываем страницу через метод в Base_page
 
         go_to_order_page = open_main_page.click_order_button_one()    # Кликаем по кнопке # Заказать и используем метод перехода из main_page
         assert go_to_order_page.get_header_1().is_displayed()         # click_order_button_one() c ретерном следующей страницы (анкеты). Здесь переход
@@ -25,89 +29,33 @@ class TestMainPage:
     def test_use_order_button_2(self, driver):
 
         open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
+        open_main_page.open_page(URLs.BASE_URL)
 
         go_to_order_page = open_main_page.click_order_button_two()   # возвращаем новую страницу
         assert go_to_order_page.get_header_1().is_displayed()        # как закрыть всплывающее окно с куки?
 
+    class TestMainPage:
+        data = [
 
-    def test_select_question_1(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)  # Открыли стр
+            [Locators.QUESTION_1, Locators.ANSWER_1, QuestionsAnswers.ANSWER_1_FOR_ASSERT],
+            [Locators.QUESTION_2, Locators.ANSWER_2, QuestionsAnswers.ANSWER_2_FOR_ASSERT],
+            [Locators.QUESTION_3, Locators.ANSWER_3, QuestionsAnswers.ANSWER_3_FOR_ASSERT],
+            [Locators.QUESTION_4, Locators.ANSWER_4, QuestionsAnswers.ANSWER_4_FOR_ASSERT],
+            [Locators.QUESTION_5, Locators.ANSWER_5, QuestionsAnswers.ANSWER_5_FOR_ASSERT],
+            [Locators.QUESTION_6, Locators.ANSWER_6, QuestionsAnswers.ANSWER_6_FOR_ASSERT],
+            [Locators.QUESTION_7, Locators.ANSWER_7, QuestionsAnswers.ANSWER_7_FOR_ASSERT],
+            [Locators.QUESTION_8, Locators.ANSWER_8, QuestionsAnswers.ANSWER_8_FOR_ASSERT]
+        ]
 
-        open_main_page.scroll_to_questions()  # Прокрутили
-        open_main_page.select_question_1()  # Выбрали вопрос
+        @pytest.mark.parametrize('question,answer,text', data)  # добавляем data
+        def test_choosing_questions(self, driver, question, answer, text):
+            open_main_page = MainPage(driver)
+            open_main_page.open_page(URLs.BASE_URL)
+            open_main_page.scroll_to_questions()
 
-
-        assert open_main_page.select_question_1() == QuestionsAnswers.ANSWER_ONE_TEXT
-
-
-    def test_select_question_2(self, driver):
-
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_2()
-
-        assert open_main_page.select_question_2().text == QuestionsAnswers.ANSWER_TWO_TEXT
-
-
-    def test_select_question_3(self, driver):
-
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_3()
-
-        assert open_main_page.select_question_3().text == QuestionsAnswers.ANSWER_THREE_TEXT
+            text_to_be_displayed = open_main_page.select_questions(question, answer)
+            assert text_to_be_displayed == text
 
 
-    def test_select_question_4(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_4()
-
-        assert open_main_page.select_question_4().text == QuestionsAnswers.ANSWER_FOUR_TEXT
-
-    def test_select_question_5(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_5()
-
-        assert open_main_page.select_question_5().text == QuestionsAnswers.ANSWER_FIVE_TEXT
-
-    def test_select_question_6(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_6()
-
-        assert open_main_page.select_question_6().text == QuestionsAnswers.ANSWER_SIX_TEXT
-
-    def test_select_question_7(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_7()
-
-        assert open_main_page.select_question_7().text == QuestionsAnswers.ANSWER_SEVEN_TEXT
-
-    def test_select_question_8(self, driver):
-        open_main_page = MainPage(driver)
-        open_main_page.open_page(URLs.OPEN_SCOOTER)
-
-        open_main_page.scroll_to_questions()
-        open_main_page.select_question_8()
-
-        assert open_main_page.select_question_8().text == QuestionsAnswers.ANSWER_EIGHT_TEXT
 
 
-        # не совсем понял, как здесь применить параметризацию

@@ -26,8 +26,6 @@ class Locators:
 
     ANSWER_1 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_ONE_TEXT}")]')
 
-#
-
     ANSWER_2 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_TWO_TEXT}")]')
 
     ANSWER_3 = (By.XPATH, f'.//p[(text()="{QuestionsAnswers.ANSWER_THREE_TEXT}")]')
@@ -57,6 +55,12 @@ class Locators:
     ORDER_BUTTON_1_AT_THE_TOP = (By.XPATH, ".//div[contains(@class, 'Header_Nav')]/button[contains(@class, 'Button_Button') and (text()='Заказать')]")
 
     ORDER_BUTTON_2_AT_THE_BOTTOM = (By.XPATH, ".//div[contains(@class, 'Home_FinishButton')]/button[contains(@class, 'Button_Button') and (text()='Заказать')]")
+
+    LOGO_YA = (By.XPATH, ".//div/header/div[contains(@class, 'desktop-base-header')]/a")
+
+
+    CLOSE_POPUP = (By.XPATH, ".//div[8]//span[contains(@class, 'cd475')]//*[local-name()='svg']")
+
 
 
 # Перенести переключение окон в BasePage

@@ -1,7 +1,8 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support import expected_conditions as EC
 
+from locators import Locators
 #from selenium.webdriver.support import expected_conditions as EC
 
 from selenium.webdriver.common.by import By
@@ -13,13 +14,6 @@ from locators import Locators
 
 class BasePage:
 
-   # ORDER_BUTTON_1_AT_THE_TOP = (By.XPATH, ".//div/button[@class='Button_Button__ra12g' and (text()='Заказать')]")
-
-    # SAMOKAT_BUTTON = (By.XPATH, "//div/a[(@class='Header_LogoScooter__3lsAR' and @href='/')]")
-
-    # - YANDEX_DZEN_BUTTON = (By.XPATH, ".//a/img[@alt='Yandex']")
-    # + LINK_TO_DZEN = (By.XPATH, "//div/a[(@class='Header_LogoYandex__3TSOI' and @href='//yandex.ru')]")
-
 
 
     def __init__(self, driver): # тесты делаем отдельно. То есть для страницы Об аренде у нас класс страница и тесты на каждое поле
@@ -27,8 +21,23 @@ class BasePage:
 
     @allure.step('Метод поиска и ожидания элемента')
     def wait_and_find_element(self, locator):
-        WebDriverWait(self.driver, 5).until(expected_conditions.visibility_of_element_located(locator))
+        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
+
+    @allure.step('Метод поиска и ожидания элемента с возможностью выставления времени ожидания')
+    def find_element_located(self, locator, time=8):    # изменить время в одном из тестов
+
+        return WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator), message=f'Not found {locator}')
+
+    @allure.step('Метод поиска и ожидания нескольких элементов с возможностью выставления времени ожидания')
+    def find_elementS_located(self, locator, time=10):
+
+        return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(locator), message=f'Not found {locator}')
+
+    # ПРОДОЛЖИТЬ ТУТ. ПРИМЕНИТЬ ЭТИ МЕТОДЫ В ТЕСТАХ (заменить сарый и проверить работоспособность)
+
+    # Затем перекроить страницы и написать параметризованный тест на два набора данных
+
 
 
 
@@ -45,6 +54,10 @@ class BasePage:
         #return MainPage(self.driver) ##########
 
 
+    def switch_to_last_browser_tab(self):
 
+        window_before = self.driver.window_handles
+        windows_after = self.driver.switch_to.window(window_before[-1])
+        return windows_after
 
 # ввод в поле - называть input ....
