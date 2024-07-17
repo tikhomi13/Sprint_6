@@ -1,3 +1,5 @@
+import time
+
 import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
@@ -12,24 +14,22 @@ from locators import Locators
 @allure.step('Главная страница')
 class MainPage(BasePage):
 
-    @allure.step('Метод клика по кнопке Заказать, расположенной в хедере')
-    def click_order_button_one(self): #### вот тут !!!!!!!!!!! правильный вариант - перенести выше
+    @allure.step('Метод выбора кнопок "Заказать" для параметризованного теста')
+    def click_order_button(self, button):
 
-        order_button_1 = self.wait_and_find_element(Locators.ORDER_BUTTON_1_AT_THE_TOP)   # problem Была изза звезды
-        order_button_1.click()
+        if button == Locators.ORDER_BUTTON_2_AT_THE_BOTTOM:
 
-        return OrderPageOne(self.driver)   # Выполняется переход на другую стр
+            element_to_scroll = self.wait_and_find_element(Locators.RENT_TIME_IS_FINISHING)
+            self.driver.execute_script("arguments[0]. scrollIntoView();", element_to_scroll)
 
-    @allure.step('Метод клика по кнопке Заказать, расположенной на главной странице ниже')
-    def click_order_button_two(self):
+            order_button = self.wait_and_find_element(button)
+            order_button.click()
 
-        element_to_scroll = self.wait_and_find_element(Locators.RENT_TIME_IS_FINISHING)
-        self.driver.execute_script("arguments[0]. scrollIntoView();", element_to_scroll)
+        else:
 
-        order_button_2 = self.driver.find_element(*Locators.ORDER_BUTTON_2_AT_THE_BOTTOM)
-        order_button_2.click()
+            order_button = self.wait_and_find_element(button)
+            order_button.click()
 
-        return OrderPageOne(self.driver)
 
     @allure.step('Метод скролла до видимости кнопки Заказать, расположенной на главной странице')
     def scroll_to_questions(self):
@@ -53,10 +53,24 @@ class MainPage(BasePage):
 
         return self.wait_and_find_element(Locators.MAIN_PAGE_SLOGAN)
 
+    #@allure.step("Кнопка редиректа в dzen в хедере слева")
+    #def click_yandex_button(self):
+
+     #   yandex_button = self.wait_and_find_element(Locators.LINK_TO_DZEN)
+     #   yandex_button.click()
+
+#        return RedirectToYandex(self.driver)
+
+
     @allure.step("Кнопка редиректа в dzen в хедере слева")
     def click_yandex_button(self):
 
-        yandex_button = self.wait_and_find_element(Locators.LINK_TO_DZEN)
+        yandex_button = self.find_element_located(Locators.LINK_TO_DZEN)
         yandex_button.click()
 
         return RedirectToYandex(self.driver)
+
+    def close_cookie_popup(self):
+
+        cookie_accept = self.find_element_located(Locators.COOKIE_WINDOW)
+        cookie_accept.click()

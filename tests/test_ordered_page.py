@@ -18,7 +18,6 @@ class TestOrderedPage:
         main_screen = MainPage(driver)
         assert main_screen.slogan_on_main_page().is_displayed()
 
-        # тут еще добавить тест на дзен
 
     def test_go_to_dzen(self, driver):
 
@@ -31,6 +30,6 @@ class TestOrderedPage:
         yandex_page = RedirectToYandex(driver)
         yandex_page.dzen_url()
 
-        assert yandex_page.dzen_url() == URLs.URL_DZEN
         yandex_page.close_popup()
+        assert yandex_page.dzen_url() == URLs.URL_DZEN
 

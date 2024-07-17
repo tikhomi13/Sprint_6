@@ -12,20 +12,10 @@ class RedirectToYandex(BasePage):
 
     def close_popup(self):
 
-        close_popup = self.wait_and_find_element(Locators.CLOSE_POPUP) #
-
-        WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of_element_located(Locators.CLOSE_POPUP))
-        close_popup.click()
-
-    def logo_main(self):
-
-        logo = self.wait_and_find_element(Locators.LOGO_YA)
-        return logo
+        self.wait_and_find_element(Locators.CLOSE_POPUP).click()
 
     def dzen_url(self):
 
-       # self.driver.set_script_timeout(4)
         url = self.driver.current_url
-
-        self.wait_and_find_element(Locators.LOGO_YA)
+        self.find_element_located(Locators.LOGO_YA, 10)
         return url

@@ -5,8 +5,12 @@ from selenium.webdriver.support import expected_conditions
 from data import URLs
 from data import QuestionsAnswers
 
+import time
+
 
 class Locators:
+
+    # main_page
 
     QUESTION_1 = (By.ID, "accordion__heading-0")
 
@@ -50,20 +54,81 @@ class Locators:
 
     SAMOKAT_BUTTON = (By.XPATH, "//div/a[(@class='Header_LogoScooter__3lsAR' and @href='/')]")
 
-
-
     ORDER_BUTTON_1_AT_THE_TOP = (By.XPATH, ".//div[contains(@class, 'Header_Nav')]/button[contains(@class, 'Button_Button') and (text()='Заказать')]")
 
     ORDER_BUTTON_2_AT_THE_BOTTOM = (By.XPATH, ".//div[contains(@class, 'Home_FinishButton')]/button[contains(@class, 'Button_Button') and (text()='Заказать')]")
 
     LOGO_YA = (By.XPATH, ".//div/header/div[contains(@class, 'desktop-base-header')]/a")
 
-
-    CLOSE_POPUP = (By.XPATH, ".//div[8]//span[contains(@class, 'cd475')]//*[local-name()='svg']")
-
+    COOKIE_WINDOW = (By.XPATH, ".//div/button[contains(@class, 'App_CookieButton')]")
 
 
-# Перенести переключение окон в BasePage
+
+
+    # order_page_ 1
+
+    WHO_IS_THE_SCOOTER_FOR_CHECK_PAGE = (By.XPATH, ".//div[(text()='Для кого самокат')]")  # Для кого самокат
+
+    FIRSTNAME_FIELD = (By.XPATH, "//div/input[@placeholder='* Имя']")
+
+    LASTNAME_FIELD = (By.XPATH, "//div/input[@placeholder='* Фамилия']")
+
+    ADDRESS_FIELD = (By.XPATH, "//div/input[@placeholder='* Адрес: куда привезти заказ']")
+
+    METRO_LIST = (By.XPATH, ".//input[@class='select-search__input' and @placeholder='* Станция метро']")
+
+    SELECT_METRO = (By.XPATH, "//div[(text()='Волоколамская')]")
+
+    PHONE_FIELD = (By.XPATH, "//div/input[@placeholder='* Телефон: на него позвонит курьер']")
+
+    NEXT_BUTTON = (By.XPATH, ".//div/button[(@class='Button_Button__ra12g Button_Middle__1CSJM') and (text()='Далее')]")
+
+    # order_page_2
+
+    ABOUT_THE_RENT_CHECK_PAGE = (By.XPATH, ".//div[(text()='Про аренду')]")                # Про аренду
+
+    CALENDAR = (By.XPATH, ".//div[@class='react-datepicker__input-container']/input[@placeholder='* Когда привезти самокат']/parent::div")
+
+    CALENDAR_SELECT_DATE = (By.XPATH, ".//div[(@class='react-datepicker')]//div[@aria-label='Choose вторник, 2-е июля 2024 г.']")
+
+    RENT_PERIOD_LIST = (".//div[(text()='* Срок аренды')]/parent::div[@class='Dropdown-control']")
+
+    SELECT_RENT_PERIOD = (By.XPATH, ".//div[(text()='двое суток')]") ###
+
+    BIKE_COLOR_BLACK = (By.XPATH, ".//div[@class='Order_Checkboxes__3lWSI']/label[(text()='чёрный жемчуг')]")  # кликнуть
+
+    COMMENT_FIELD = (By.XPATH, ".//input[@placeholder='Комментарий для курьера']") #click
+
+    CREATE_ORDER_BUTTON = (By.XPATH, ".//div[@class='Order_Buttons__1xGrp']/button[(text()='Заказать')]")
+
+    CONFIRM_BUTTON_YES = (By.XPATH, ".//button[(text()='Да')]")
+
+    ORDER_ADDED = (By.XPATH, ".//div[@class='Order_ModalHeader__3FDaJ' and (text()='Заказ оформлен')]")  # is displayed
+
+    SHOW_STATUS_BUTTON = (By.XPATH, "//div/button[(text()='Посмотреть статус')]")
+
+
+    # yandex_page
+
+    CLOSE_POPUP = (By.XPATH, ".//div[3]/div/div[1]/div/div/div/div/span")  # меняющийся локатор, проверить
+
+
+
+
+
+
+
+
+
+
+
+    # ordered_page
+
+    CANCEL_ORDER_BUTTON_IS_CLICKABLE = (By.XPATH, "//div/button[(text()='Отменить заказ')]")
+
+
+
+
 
 
 

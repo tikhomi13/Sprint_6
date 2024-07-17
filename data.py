@@ -18,13 +18,23 @@ class Contents:
 
     FIRSTNAME = 'Платон'
 
+    FIRSTNAME_2 = 'Константин'
+
     LASTNAME = 'Тихомиров'
+
+    LASTNAME_2 = 'Швец'
 
     ADDRESS = 'Красногорск'
 
+    ADDRESS_2 = 'Балашиха'
+
     PHONE = '+79060837008'
 
+    PHONE_2 = '+79295062814'
+
     ADD_COMMENT = 'Комментарий_Курьеруъ Comment_111'  # send keys
+
+    ADD_COMMENT_2 = ' '
 
     SHOW_ORDER_STATUS_BUTTON = (By.XPATH, ".//button[(text()='Посмотреть статус')]")
 

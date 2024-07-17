@@ -4,8 +4,10 @@ from pages.base_page import BasePage
 from pages.ordered_page import OrderedPage
 from pages.order_page_2 import OrderPageTwo
 from pages.order_page_1 import OrderPageOne
+from pages.main_page import MainPage
 from data import URLs
 from data import Contents
+from locators import Locators
 
 @pytest.fixture(scope='function')
 def driver():                     # фикстура, задающая настройки Fierefox
@@ -20,8 +22,13 @@ def driver():                     # фикстура, задающая наст�
 @pytest.fixture()
 def order_page_1_filled(driver):    # фикстура, заполняющая анкету "Для кого самокат"
 
+    main_page = MainPage(driver)
+    main_page.open_page(URLs.BASE_URL)
+    main_page.close_cookie_popup()
+    # main_page.click_order_button_one()
+    main_page.click_order_button(Locators.ORDER_BUTTON_1_AT_THE_TOP)
+
     order_page_1 = OrderPageOne(driver)
-    order_page_1.open_page(URLs.OPEN_SCOOTER_ORDER_PAGE)
     order_page_1.fill_for_whom_page(Contents.FIRSTNAME, Contents.LASTNAME, Contents.ADDRESS, Contents.PHONE)
 
     go_to_next_page = order_page_1.click_next_to_the_second_page()
