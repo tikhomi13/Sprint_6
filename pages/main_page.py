@@ -56,6 +56,7 @@ class MainPage(BasePage):
 
         return RedirectToYandex(self.driver)
 
+    @allure.title('Метод для закрытия всплывающего окна согласия с куки')
     def close_cookie_popup(self):
 
         cookie_accept = self.find_element_located(BasePageLocators.COOKIE_WINDOW)

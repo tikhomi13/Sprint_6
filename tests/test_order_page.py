@@ -43,17 +43,17 @@ class TestOrderPage:
 
         assert go_to_next_page_ordered_page.get_cancel_button().is_displayed()
 
-    @allure.title('Переход на главную страницу со страницы созданного заказа')  # не треба
-    @allure.description('Переход с помощью кнопки Самокат. Для заполнения страниц исп. фикстура ...')  # поправить имя
+    @allure.title('Тест перехода на главную страницу со страницы созданного заказа')
+    @allure.description('Переход с помощью кнопки Самокат. Для предзаполнения страниц исп. фикстура order_filled')
     @allure.link(URLs.BASE_URL, name='Тестовая ссылка')
-    def test_go_to_main_from_order(self, driver, order_filled):  # объединить фикстуру
+    def test_go_to_main_from_order(self, driver, order_filled):
 
         back_to_main = BasePage(driver)
         back_to_main.click_samokat_button()
 
         main_screen = MainPage(driver)
         assert main_screen.slogan_on_main_page().is_displayed()
-
+    @allure.title('Тест перехода с сайта Яндекс Самокат на главную Яндекс Дзен')
     def test_go_to_dzen(self, driver):
 
         main_page = MainPage(driver)

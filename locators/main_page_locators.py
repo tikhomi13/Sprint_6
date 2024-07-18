@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
 from data import QuestionsAnswers
+import allure
 
-
+@allure.title('Локаторы для главной страницы')
 class MainPageLocators:
 
     QUESTION_1 = (By.ID, "accordion__heading-0")

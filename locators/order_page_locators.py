@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
+import allure
 
-
+@allure.title('Локаторы для страницы заказа')
 class OrderPageLocators:
 
     WHO_IS_THE_SCOOTER_FOR_CHECK_PAGE = (By.XPATH, ".//div[(text()='Для кого самокат')]")  # Для кого самокат

@@ -7,12 +7,11 @@ from locators.order_page_locators import OrderPageLocators
 @allure.step('Первая часть анкеты, до нажатия Далее')
 class OrderPage(BasePage):
 
-    @allure.step('Надпись Для кого самокат')
+    @allure.step('Надпись Для кого самокат. Добавить .text - чтобы получить текст надписи')
     def get_header_1(self):
 
         order_header_1 = self.wait_and_find_element(OrderPageLocators.WHO_IS_THE_SCOOTER_FOR_CHECK_PAGE)
         return order_header_1
-        #  .text - чтобы был текст
 
     @allure.step('Поле Имя')
     def set_firstname(self, name):
@@ -113,6 +112,7 @@ class OrderPage(BasePage):
         return OrderedPage(self.driver)  # возвращаем следующую страницу
 
     @allure.step('Переход на страницу заказа')
+    @allure.description('Метод переключает на следующую страницу - окно активного заказа (ordered_page)')
     def go_to_show_status_page(self):
 
         show_order_status = self.find_element_located(OrderPageLocators.SHOW_STATUS_BUTTON)

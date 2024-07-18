@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
+import allure
 
-
+@allure.title('Локаторы для Base Page')
 class BasePageLocators:
 
     COOKIE_WINDOW = (By.XPATH, ".//div/button[contains(@class, 'App_CookieButton')]")

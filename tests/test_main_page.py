@@ -20,6 +20,7 @@ class TestMainPage:
         [MainPageLocators.QUESTION_8, MainPageLocators.ANSWER_8, QuestionsAnswers.ANSWER_8_FOR_ASSERT]
     ]
 
+    @allure.description("Параметризованный тест для проверки ответов на восемь вопросов, расположеннных внизу гл. стр")
     @pytest.mark.parametrize('question,answer,text', data)
     def test_check_questions(self, driver, question, answer, text):
         open_main_page = MainPage(driver)

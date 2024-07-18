@@ -5,10 +5,12 @@ from pages.main_page import MainPage
 from data import URLs
 from data import Contents
 from locators.base_page_locators import BasePageLocators
+import allure
 
 
+@allure.title('Фикстура для открытия / завершения сеанса браузера и вкл. полноэкоранного режима')
 @pytest.fixture(scope='function')
-def driver():                     # фикстура, задающая настройки Fierefox
+def driver():
 
     firefox_driver = webdriver.Firefox()
     firefox_driver.maximize_window()
@@ -16,9 +18,9 @@ def driver():                     # фикстура, задающая наст�
     yield firefox_driver
     firefox_driver.quit()
 
-
+@allure.title('Фикстура для предзаполнения формы заказа самоката')
 @pytest.fixture()
-def order_filled(driver):    # фикстура, заполняющая анкету "Для кого самокат"
+def order_filled(driver):
 
     main_page = MainPage(driver)
     main_page.open_page(URLs.BASE_URL)

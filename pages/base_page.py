@@ -11,6 +11,7 @@ class BasePage:
 
     @allure.step('Метод поиска и ожидания элемента')
     def wait_and_find_element(self, locator):
+
         WebDriverWait(self.driver, 6).until(EC.visibility_of_element_located(locator))
         return self.driver.find_element(*locator)
 
@@ -18,7 +19,6 @@ class BasePage:
     def find_element_located(self, locator, time=8):
 
         WebDriverWait(self.driver, time).until(EC.presence_of_element_located(locator), message=f'Not found {locator}')
-
         return self.driver.find_element(*locator)
 
     @allure.step('Метод поиска и ожидания нескольких элементов с возможностью выставления времени ожидания')
@@ -28,15 +28,19 @@ class BasePage:
 
     @allure.step('Метод для открытия страниц')
     def open_page(self, url):
+
         self.driver.get(url)
 
-    @allure.step("Кнопка Самокат в хедере слева")
+    @allure.step("Клик по кнопке Самокат в хедере слева")
     def click_samokat_button(self):
+
         samokat_button = self.wait_and_find_element(BasePageLocators.SAMOKAT_BUTTON)
         samokat_button.click()
 
+    @allure.title('Метод для переключения вкладок')
     def switch_to_last_browser_tab(self):
 
         window_before = self.driver.window_handles
         windows_after = self.driver.switch_to.window(window_before[-1])
+
         return windows_after
