@@ -1,13 +1,11 @@
 import pytest
 from selenium import webdriver
-from pages.base_page import BasePage
-from pages.ordered_page import OrderedPage
-# from pages.order_page_2 import OrderPageTwo
 from pages.order_page import OrderPage
 from pages.main_page import MainPage
 from data import URLs
 from data import Contents
-from locators import Locators
+from locators.base_page_locators import BasePageLocators
+
 
 @pytest.fixture(scope='function')
 def driver():                     # фикстура, задающая настройки Fierefox
@@ -20,23 +18,18 @@ def driver():                     # фикстура, задающая наст�
 
 
 @pytest.fixture()
-def order_page_1_filled(driver):    # фикстура, заполняющая анкету "Для кого самокат"
+def order_filled(driver):    # фикстура, заполняющая анкету "Для кого самокат"
 
     main_page = MainPage(driver)
     main_page.open_page(URLs.BASE_URL)
     main_page.close_cookie_popup()
-    main_page.click_order_button(Locators.ORDER_BUTTON_1_AT_THE_TOP)
+    main_page.click_order_button(BasePageLocators.ORDER_BUTTON_1_AT_THE_TOP)
 
     order_page_1 = OrderPage(driver)
     order_page_1.fill_for_whom_page(Contents.FIRSTNAME, Contents.LASTNAME, Contents.ADDRESS, Contents.PHONE)
 
     go_to_next_page = order_page_1.click_next_to_the_second_page()
     go_to_next_page.get_header_2()
-
-    yield driver
-
-@pytest.fixture()
-def order_page_2_filled(driver, order_page_1_filled):    # объединить с предыдущей
 
     order_page_2 = OrderPage(driver)
     order_page_2.fill_about_rent_page(Contents.ADD_COMMENT)
