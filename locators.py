@@ -65,7 +65,7 @@ class Locators:
 
 
 
-    # order_page_ 1
+    # order_page
 
     WHO_IS_THE_SCOOTER_FOR_CHECK_PAGE = (By.XPATH, ".//div[(text()='Для кого самокат')]")  # Для кого самокат
 
@@ -82,8 +82,6 @@ class Locators:
     PHONE_FIELD = (By.XPATH, "//div/input[@placeholder='* Телефон: на него позвонит курьер']")
 
     NEXT_BUTTON = (By.XPATH, ".//div/button[(@class='Button_Button__ra12g Button_Middle__1CSJM') and (text()='Далее')]")
-
-    # order_page_2
 
     ABOUT_THE_RENT_CHECK_PAGE = (By.XPATH, ".//div[(text()='Про аренду')]")                # Про аренду
 

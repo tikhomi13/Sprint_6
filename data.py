@@ -1,6 +1,6 @@
 # Здесь тестовые данные
 
-from selenium.webdriver.common.by import By
+# from selenium.webdriver.common.by import By
 
 class URLs:
 
@@ -10,35 +10,31 @@ class URLs:
 
     URL_DZEN = 'https://dzen.ru/?yredirect=true'
 
-
-
-    # сюда вставляемые значения
-
 class Contents:
 
     FIRSTNAME = 'Платон'
 
-    FIRSTNAME_2 = 'Константин'
-
     LASTNAME = 'Тихомиров'
-
-    LASTNAME_2 = 'Швец'
 
     ADDRESS = 'Красногорск'
 
-    ADDRESS_2 = 'Балашиха'
-
     PHONE = '+79060837008'
-
-    PHONE_2 = '+79295062814'
 
     ADD_COMMENT = 'Комментарий_Курьеруъ Comment_111'  # send keys
 
+    FIRSTNAME_2 = 'Константин'
+
+    LASTNAME_2 = 'Швец'
+
+    ADDRESS_2 = 'Балашиха'
+
+    PHONE_2 = '+79295062814'
+
     ADD_COMMENT_2 = ' '
 
-    SHOW_ORDER_STATUS_BUTTON = (By.XPATH, ".//button[(text()='Посмотреть статус')]")
+   # SHOW_ORDER_STATUS_BUTTON = (By.XPATH, ".//button[(text()='Посмотреть статус')]")
 
-    CANCEL_ORDER = (By.XPATH, ".//button[(text()='Отменить заказ')]")
+    # CANCEL_ORDER = (By.XPATH, ".//button[(text()='Отменить заказ')]")
 
 class QuestionsAnswers:
 
@@ -79,32 +75,3 @@ class QuestionsAnswers:
     ANSWER_7_FOR_ASSERT = 'Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.'
 
     ANSWER_8_FOR_ASSERT = 'Да, обязательно. Всем самокатов! И Москве, и Московской области.'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

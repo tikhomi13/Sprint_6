@@ -16,7 +16,7 @@ class BasePage:
 
 
 
-    def __init__(self, driver): # тесты делаем отдельно. То есть для страницы Об аренде у нас класс страница и тесты на каждое поле
+    def __init__(self, driver):  # тесты делаем отдельно. То есть для страницы Об аренде у нас класс страница и тесты на каждое поле
         self.driver = driver     # переделать структуру, два окна это одна страница
 
     @allure.step('Метод поиска и ожидания элемента')
@@ -31,7 +31,7 @@ class BasePage:
 
         return self.driver.find_element(*locator)
 
-    @allure.step('Метод поиска и ожидания нескольких элементов с возможностью выставления времени ожидания')  # применить
+    @allure.step('Метод поиска и ожидания нескольких элементов с возможностью выставления времени ожидания')
     def find_elementS_located(self, locator, time=10):
 
         return WebDriverWait(self.driver, time).until(EC.presence_of_all_elements_located(*locator), message=f'Not found {locator}')
@@ -39,8 +39,6 @@ class BasePage:
     # ПРОДОЛЖИТЬ ТУТ. ПРИМЕНИТЬ ЭТИ МЕТОДЫ В ТЕСТАХ (заменить старый и проверить работоспособность)
 
     # Затем перекроить страницы и написать параметризованный тест на два набора данных
-
-
 
 
 
@@ -52,9 +50,6 @@ class BasePage:
     def click_samokat_button(self):
         samokat_button = self.wait_and_find_element(Locators.SAMOKAT_BUTTON)
         samokat_button.click()
-
-        #return MainPage(self.driver) ##########
-
 
     def switch_to_last_browser_tab(self):
 

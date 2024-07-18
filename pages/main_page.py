@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 
 from pages.base_page import BasePage
-from pages.order_page_1 import OrderPageOne
+from pages.order_page import OrderPage
 from pages.yandex_page import RedirectToYandex
 from locators import Locators
 
@@ -52,14 +52,6 @@ class MainPage(BasePage):
     def slogan_on_main_page(self):
 
         return self.wait_and_find_element(Locators.MAIN_PAGE_SLOGAN)
-
-    #@allure.step("Кнопка редиректа в dzen в хедере слева")
-    #def click_yandex_button(self):
-
-     #   yandex_button = self.wait_and_find_element(Locators.LINK_TO_DZEN)
-     #   yandex_button.click()
-
-#        return RedirectToYandex(self.driver)
 
 
     @allure.step("Кнопка редиректа в dzen в хедере слева")
